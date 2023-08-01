@@ -1,11 +1,11 @@
 Vue.component('my_button', {
-    props: ['my_button_prop'],
-    template: '<button class="btn btn-primary">{{ my_button_prop }}</button>'
+    props: ['title'],
+    template: '<button class="btn btn-primary">{{ title }}</button>'
 });
 
 new Vue({
     el: '#button_component',
     data:{
-        propValue: 'TITLE'
+        propValue: ''
     }
 });
