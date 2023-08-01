@@ -11,8 +11,8 @@ Vue.component("todo_list", {
   // Renderer for each to do item (accepts one item as props)
   Vue.component("todo_item", {
     props: ["todo_item_prop"],
-    template: `<li v-bind:class="{ strike: todo_item_prop.done }">
-                {{ todo_item_prop.text }}
+    template: `<li v-bind:class="{ strike: todo_item_prop.completed }">
+                {{ todo_item_prop.title }}
               </li>`,
   })
   
@@ -21,9 +21,26 @@ Vue.component("todo_list", {
     el: "#app_component",
     data: {
       todoList: [
+        /*
         { id: 0, text: "Brush teeth", done: true },
         { id: 1, text: "Buy chocolate", done: false },
         { id: 2, text: "Sell laptop", done: false },
+        */
       ],
+    },
+    methods: {
+      getTodoList: function () {
+        //console.log('getTodoList()');
+        axios.get('https://jsonplaceholder.typicode.com/todos')
+        .then(response => {
+            this.todoList = response.data;
+        })
+        .catch(error => {
+            console.log(error);
+        })
+      }
+    },
+    mounted: function () {
+      this.getTodoList();
     },
   })
