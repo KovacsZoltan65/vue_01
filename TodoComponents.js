@@ -20,13 +20,7 @@ Vue.component("todo_list", {
   new Vue({
     el: "#app_component",
     data: {
-      todoList: [
-        /*
-        { id: 0, text: "Brush teeth", done: true },
-        { id: 1, text: "Buy chocolate", done: false },
-        { id: 2, text: "Sell laptop", done: false },
-        */
-      ],
+      todoList: [],
     },
     methods: {
       getTodoList: function () {
